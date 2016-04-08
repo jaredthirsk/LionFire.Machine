@@ -9,8 +9,6 @@ namespace LionFire.Machine.Api.Controllers
     [Route("machine/[controller]")]
     public class ServicesController : Controller
     {
-        [HttpGet("[action]"]
-            public LoadAvgFile
 
         // GET: api/values
         [HttpGet]
