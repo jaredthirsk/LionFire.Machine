@@ -100,7 +100,12 @@ namespace LionFire.Web.PullAgent.Mvc.Controllers
         {
 
             //var pullUrl = json.repository.ssh_url as string ?? json.repository.url as string;
-            var pullUrl = repoOptions.SshUrl ?? repoOptions.Url;
+            var pullUrl = repoOptions.SshUrl;
+            if (String.IsNullOrWhiteSpace(pullUrl))
+            {
+                pullUrl = repoOptions.Url;
+            }
+
             Console.WriteLine("pullUrl: " + pullUrl);
             bool result = Git.Pull(repoOptions.Path, pullUrl);
 

@@ -32,8 +32,9 @@ namespace LionFire.RevisionControl
             }
         }
 
-        public static bool Clone(string uri, string workingDirectory = null, string fileName = "")
+        public static bool Clone(string cloneUrl, string workingDirectory = null, string fileName = "")
         {
+            if (String.IsNullOrWhiteSpace(cloneUrl)) { throw new ArgumentNullException("cloneUrl cannot be empty or null for clone"); }
             if (workingDirectory != null)
             {
                 if (!Directory.Exists(workingDirectory))
@@ -42,22 +43,22 @@ namespace LionFire.RevisionControl
                 }
             }
 
-            var psi = new ProcessStartInfo(GitExe, " clone " + uri + " " + fileName);
+            var psi = new ProcessStartInfo(GitExe, " clone " + cloneUrl + " " + fileName);
             psi.WorkingDirectory = workingDirectory;
-            Console.WriteLine("Starting git clone " + uri);
+            Console.WriteLine("Starting git clone " + cloneUrl);
             var p = Process.Start(psi);
             p.WaitForExit();
             Console.WriteLine("git exited with code " + p.ExitCode);
             return p.ExitCode == 0;
         }
 
-        public static bool Pull(string workingDirectory = null, string uri = null)
+        public static bool Pull(string workingDirectory = null, string url = null)
         {
             if (workingDirectory != null)
             {
                 if (!Directory.Exists(workingDirectory))
                 {
-                    if (uri != null) { return Clone(uri, Path.GetDirectoryName(workingDirectory), Path.GetFileName(workingDirectory)); }
+                    if (!String.IsNullOrWhiteSpace(url)) { return Clone(url, Path.GetDirectoryName(workingDirectory), Path.GetFileName(workingDirectory)); }
                     else { throw new Exception("Directory doesn't exist and no uri provided.  Can't pull."); }
                 }
             }
