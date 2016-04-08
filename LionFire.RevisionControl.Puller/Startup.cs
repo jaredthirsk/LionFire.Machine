@@ -100,18 +100,19 @@ namespace LionFire.Web.PullAgent.Mvc
 
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(_ =>
             {
-                System.Threading.Thread.Sleep(4000);
+                // REFACTOR - into pullall method somewhere
+                System.Threading.Thread.Sleep(3000);
                 foreach (var repo in pullAgentOptions.Value.Repositories.Select(kvp => kvp.Value))
                 {
-                    if (Directory.Exists(repo.Path))
-                    {
-                        continue;
-                    }
+                    //if (Directory.Exists(repo.Path))
+                    //{
+                    //    continue;
+                    //}
 
                     var tag = String.IsNullOrWhiteSpace(repo.Tag) ? null : repo.Tag;
                     var branch = String.IsNullOrWhiteSpace(repo.Branch) ? null : repo.Branch;
 
-                    bool result = Git.Clone(repo.SshUrl, Path.GetDirectoryName(repo.Path), Path.GetFileName(repo.Path)); // REFACTOR
+                    bool result = Git.Clone(repo.SshUrl ?? repo.Url, Path.GetDirectoryName(repo.Path), Path.GetFileName(repo.Path)); // REFACTOR
                     if (result)
                     { // REFACTOR
                         if (tag != null)
