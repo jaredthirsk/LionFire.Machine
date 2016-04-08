@@ -16,7 +16,8 @@ namespace LionFire.Machine.Api
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json");
+                //.AddJsonFile("appsettings.json") // TODO - absolute path?
+                ;
 
             if (env.IsEnvironment("Development"))
             {
@@ -25,7 +26,9 @@ namespace LionFire.Machine.Api
             }
 
             builder.AddEnvironmentVariables();
-            Configuration = builder.Build().ReloadOnChanged("appsettings.json");
+            Configuration = builder.Build()
+                //.ReloadOnChanged("appsettings.json")  // TODO - absolute path?
+                ;
         }
 
         public IConfigurationRoot Configuration { get; set; }
