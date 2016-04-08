@@ -60,10 +60,10 @@ namespace LionFire.Web.PullAgent.Mvc.Controllers
         {
             string repoUri = json.repository.url;
 
-            return _Pull(new Func<KeyValuePair<string, RepoOptions >,bool>( _kvp => _kvp.Value.Url == repoUri), json);
+            return _Pull(new Func<KeyValuePair<string, RepoOptions>, bool>(_kvp => _kvp.Value.Url == repoUri), json);
         }
 
-        internal  List<string> _Pull(Func<KeyValuePair<string, RepoOptions>, bool> filter = null, dynamic json=null)
+        internal List<string> _Pull(Func<KeyValuePair<string, RepoOptions>, bool> filter = null, dynamic hookEvent = null)
         {
             var results = new List<string>();
             if (filter == null) filter = _ => true;
@@ -71,19 +71,19 @@ namespace LionFire.Web.PullAgent.Mvc.Controllers
             {
                 var repoOptions = kvp.Value;
                 var tag = String.IsNullOrWhiteSpace(repoOptions.Tag) ? null : repoOptions.Tag;
-                if (tag != null
-                    && (json?.ref_type?.ToString() != "tag"
-                        || json?.@ref?.ToString() != repoOptions.Tag)
+                if (hookEvent != null && tag != null
+                    && (hookEvent?.ref_type?.ToString() != "tag"
+                        || hookEvent?.@ref?.ToString() != repoOptions.Tag)
                     )
                 {
                     continue;
                 }
 
                 var branch = String.IsNullOrWhiteSpace(repoOptions.Branch) ? null : repoOptions.Branch;
-                if (branch != null
+                if (hookEvent != null && branch != null
                     && (
                         //json.ref_type?.ToString() != "branch"|| 
-                        json?.@ref?.ToString() != "refs/heads/" + repoOptions.Branch)
+                        hookEvent?.@ref?.ToString() != "refs/heads/" + repoOptions.Branch)
                     )
                 {
                     continue;
