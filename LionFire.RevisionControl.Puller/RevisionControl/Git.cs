@@ -44,13 +44,11 @@ namespace LionFire.RevisionControl
 
             var psi = new ProcessStartInfo(GitExe, " clone " + uri + " " + fileName);
             psi.WorkingDirectory = workingDirectory;
-            Console.WriteLine("Starting checkout: git clone " + uri);
+            Console.WriteLine("Starting git clone " + uri);
             var p = Process.Start(psi);
             p.WaitForExit();
             Console.WriteLine("git exited with code " + p.ExitCode);
             return p.ExitCode == 0;
-
-
         }
 
         public static bool Pull(string workingDirectory = null, string uri = null)

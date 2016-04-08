@@ -115,7 +115,7 @@ namespace LionFire.Web.PullAgent.Mvc.Controllers
                     result &= Git.CheckoutBranch(repoOptions.Path, branch);
                 }
             }
-            return result.ToString();
+            return name + ": " + result.ToString();
         }
 
         #endregion
