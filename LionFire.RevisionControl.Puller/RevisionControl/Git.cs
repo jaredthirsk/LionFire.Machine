@@ -65,7 +65,7 @@ namespace LionFire.RevisionControl
             }
             var psi = new ProcessStartInfo(GitExe, " pull");
             psi.WorkingDirectory = workingDirectory;
-            Console.WriteLine("Starting pull: git pull");
+            Console.WriteLine("Starting git pull in " + workingDirectory);
             var p = Process.Start(psi);
             p.WaitForExit();
             Console.WriteLine("git exited with code " + p.ExitCode);
