@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.Machine", "LionFire.Machine\LionFire.Machine.xproj", "{35290114-1141-43FB-ABED-A763FED4BFD6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.Machine", "src\LionFire.Machine\LionFire.Machine.xproj", "{35290114-1141-43FB-ABED-A763FED4BFD6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.RevisionControl.Puller", "LionFire.RevisionControl.Puller\LionFire.RevisionControl.Puller.xproj", "{DE61DA25-3156-415B-8CD4-9355F75BECDB}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.RevisionControl.Puller", "src\LionFire.RevisionControl.Puller\LionFire.RevisionControl.Puller.xproj", "{DE61DA25-3156-415B-8CD4-9355F75BECDB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.Machine.Api", "LionFire.Machine.Api\LionFire.Machine.Api.xproj", "{96FCE347-254A-4A9E-ADC9-E4619B4FA0A2}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LionFire.Machine.Api", "src\LionFire.Machine.Api\LionFire.Machine.Api.xproj", "{96FCE347-254A-4A9E-ADC9-E4619B4FA0A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0F9D0B5-709F-4B86-97D1-F39E0D8207BD}"
 	ProjectSection(SolutionItems) = preProject
