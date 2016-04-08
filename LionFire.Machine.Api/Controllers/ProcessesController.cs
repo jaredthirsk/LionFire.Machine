@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace LionFire.Machine.Api.Controllers
 {
-    //[Route("machine/[controller]")]
+    [Route("[controller]")]
     public class ProcessesController : Controller
     {
         //[HttpGet("[action]")]
+        [HttpGet]
         public LoadAvgFile LoadAvg()
         {
             return LoadAvgFile.Retrieve();
