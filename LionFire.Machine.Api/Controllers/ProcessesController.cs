@@ -10,8 +10,7 @@ namespace LionFire.Machine.Api.Controllers
     [Route("[controller]")]
     public class ProcessesController : Controller
     {
-        //[HttpGet("[action]")]
-        [HttpGet]
+        [HttpGet("[action]")]
         public LoadAvgFile LoadAvg()
         {
             return LoadAvgFile.Retrieve();
